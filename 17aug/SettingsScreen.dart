@@ -33,7 +33,6 @@ class SettingsScreen extends StatelessWidget {
                 ),
               ),
               SizedBox(height: 30),
-              buildSettingsOption(context, 'Dark Mode', Icons.dark_mode),
               buildSettingsOption(context, 'Notifications', Icons.notifications),
               buildSettingsOption(context, 'Account', Icons.account_circle),
               buildSettingsOption(context, 'Help', Icons.help_outline),
