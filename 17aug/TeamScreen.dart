@@ -5,18 +5,18 @@ import '../widgets/team_member_card.dart';
 
 class TeamScreen extends StatelessWidget {
   final List<TeamMember> developers = [
-    TeamMember(name: 'Aryan', linkedInUrl: 'https://linkedin.com/aryan', githubUrl: 'https://github.com/aryan'),
-    TeamMember(name: 'Dharrsan', linkedInUrl: 'https://linkedin.com/dharrsan', githubUrl: 'https://github.com/dharrsan'),
-    TeamMember(name: 'Akshit', linkedInUrl: 'https://linkedin.com/akshit', githubUrl: 'https://github.com/akshit'),
-    TeamMember(name: 'Amrit', linkedInUrl: 'https://linkedin.com/amrit', githubUrl: 'https://github.com/amrit'),
-    TeamMember(name: 'Sampark', linkedInUrl: 'https://linkedin.com/sampark', githubUrl: 'https://github.com/sampark'),
-    TeamMember(name: 'Krish', linkedInUrl: 'https://linkedin.com/krish', githubUrl: 'https://github.com/krish'),
+    TeamMember(name: 'Aryan', linkedInUrl: 'https://linkedin.com/', githubUrl: 'https://github.com/'),
+    TeamMember(name: 'Dharrsan', linkedInUrl: 'https://linkedin.com/', githubUrl: 'https://github.com/'),
+    TeamMember(name: 'Akshit', linkedInUrl: 'https://linkedin.com/', githubUrl: 'https://github.com/'),
+    TeamMember(name: 'Amrit', linkedInUrl: 'https://linkedin.com/', githubUrl: 'https://github.com/'),
+    TeamMember(name: 'Sampark', linkedInUrl: 'https://linkedin.com/', githubUrl: 'https://github.com/'),
+    TeamMember(name: 'Krish', linkedInUrl: 'https://linkedin.com/', githubUrl: 'https://github.com/'),
   ];
 
   final List<TeamMember> designers = [
-    TeamMember(name: 'Aditya', linkedInUrl: 'https://linkedin.com/aditya', githubUrl: 'https://github.com/aditya'),
-    TeamMember(name: 'Gourav', linkedInUrl: 'https://linkedin.com/gourav', githubUrl: 'https://github.com/gourav'),
-    TeamMember(name: 'Ishi', linkedInUrl: 'https://linkedin.com/ishi', githubUrl: 'https://github.com/ishi'),
+    TeamMember(name: 'Aditya', linkedInUrl: 'https://linkedin.com/', githubUrl: 'https://github.com/'),
+    TeamMember(name: 'Gourav', linkedInUrl: 'https://linkedin.com/', githubUrl: 'https://github.com/'),
+    TeamMember(name: 'Ishi', linkedInUrl: 'https://linkedin.com/', githubUrl: 'https://github.com/'),
   ];
 
   @override
