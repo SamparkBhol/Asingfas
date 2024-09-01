@@ -1,71 +1,140 @@
 import 'package:flutter/material.dart';
-import 'package:carousel_slider/carousel_slider.dart';
-import '../models/team_member.dart';
-import '../widgets/team_member_card.dart';
 
-class TeamScreen extends StatelessWidget {
-  final List<TeamMember> developers = [
-    TeamMember(name: 'Aryan', linkedInUrl: 'https://linkedin.com/', githubUrl: 'https://github.com/'),
-    TeamMember(name: 'Dharrsan', linkedInUrl: 'https://linkedin.com/', githubUrl: 'https://github.com/'),
-    TeamMember(name: 'Akshit', linkedInUrl: 'https://linkedin.com/', githubUrl: 'https://github.com/'),
-    TeamMember(name: 'Amrit', linkedInUrl: 'https://linkedin.com/', githubUrl: 'https://github.com/'),
-    TeamMember(name: 'Sampark', linkedInUrl: 'https://linkedin.com/', githubUrl: 'https://github.com/'),
-    TeamMember(name: 'Krish', linkedInUrl: 'https://linkedin.com/', githubUrl: 'https://github.com/'),
-  ];
+void main() {
+  runApp(MyApp());
+}
 
-  final List<TeamMember> designers = [
-    TeamMember(name: 'Aditya', linkedInUrl: 'https://linkedin.com/', githubUrl: 'https://github.com/'),
-    TeamMember(name: 'Gourav', linkedInUrl: 'https://linkedin.com/', githubUrl: 'https://github.com/'),
-    TeamMember(name: 'Ishi', linkedInUrl: 'https://linkedin.com/', githubUrl: 'https://github.com/'),
-  ];
+class MyApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: MeetTheTeamPage(),
+    );
+  }
+}
+
+class MeetTheTeamPage extends StatelessWidget {
+  final List<String> developerNames = ['Aryan', 'Dharrsan', 'Akshit', 'Amrit', 'Sampark', 'Krish'];
+  final List<String> designerNames = ['Aditya', 'Gourav', 'Ishi'];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.black,
       appBar: AppBar(
-        title: Text('The Team'),
+        leading: IconButton(
+          icon: Icon(Icons.arrow_back, color: Colors.white),
+          onPressed: () {
+            // Implement the back button action here
+          },
+        ),
         backgroundColor: Colors.black,
+        elevation: 0,
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              'Developers',
-              style: TextStyle(color: Colors.white, fontSize: 24, fontWeight: FontWeight.bold),
-            ),
-            SizedBox(height: 10),
-            CarouselSlider(
-              options: CarouselOptions(
-                height: 250.0,
-                enlargeCenterPage: true,
-                autoPlay: true,
-                autoPlayCurve: Curves.fastOutSlowIn,
-                enableInfiniteScroll: true,
-                autoPlayAnimationDuration: Duration(milliseconds: 800),
+              'MEET THE TEAM',
+              style: TextStyle(
+                color: Colors.white,
+                fontSize: 28,
+                fontWeight: FontWeight.bold,
               ),
-              items: developers.map((member) {
-                return TeamMemberCard(member: member);
-              }).toList(),
             ),
-            SizedBox(height: 30),
+            SizedBox(height: 20),
             Text(
-              'Designers',
-              style: TextStyle(color: Colors.white, fontSize: 24, fontWeight: FontWeight.bold),
+              'DEVELOPERS',
+              style: TextStyle(
+                color: Colors.white,
+                fontSize: 18,
+                fontWeight: FontWeight.w500,
+              ),
             ),
             SizedBox(height: 10),
-            CarouselSlider(
-              options: CarouselOptions(
-                height: 250.0,
-                enlargeCenterPage: true,
-                autoPlay: true,
-                autoPlayCurve: Curves.fastOutSlowIn,
-                enableInfiniteScroll: true,
-                autoPlayAnimationDuration: Duration(milliseconds: 800),
+            buildCarousel(developerNames, 'Developer'),
+            SizedBox(height: 20),
+            Text(
+              'DESIGNERS',
+              style: TextStyle(
+                color: Colors.white,
+                fontSize: 18,
+                fontWeight: FontWeight.w500,
               ),
-              items: designers.map((member) {
-                return TeamMemberCard(member: member);
-              }).toList(),
+            ),
+            SizedBox(height: 10),
+            buildCarousel(designerNames, 'UI/UX Designer'),
+            Spacer(),
+            Align(
+              alignment: Alignment.bottomCenter,
+              child: Image.asset('assets/ieee_logo.png', width: 80, height: 80),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  Widget buildCarousel(List<String> names, String role) {
+    return Container(
+      height: 150,
+      child: ListView.builder(
+        scrollDirection: Axis.horizontal,
+        itemCount: names.length,
+        itemBuilder: (context, index) {
+          return buildTeamCard(names[index], role);
+        },
+      ),
+    );
+  }
+
+  Widget buildTeamCard(String name, String role) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 8.0),
+      child: Container(
+        width: 120,
+        decoration: BoxDecoration(
+          color: Color(0xFF2A2A2A),
+          borderRadius: BorderRadius.circular(15),
+        ),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            CircleAvatar(
+              radius: 30,
+              backgroundColor: Colors.white,
+              backgroundImage: AssetImage('assets/avatar.png'), // Placeholder for avatar image
+            ),
+            SizedBox(height: 10),
+            Text(
+              name.toUpperCase(),
+              style: TextStyle(
+                color: Colors.white,
+                fontSize: 16,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+            SizedBox(height: 5),
+            Text(
+              role,
+              style: TextStyle(
+                color: Colors.white70,
+                fontSize: 14,
+              ),
+            ),
+            SizedBox(height: 10),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Icon(Icons.linked_camera, color: Colors.white, size: 20),
+                SizedBox(width: 5),
+                Icon(Icons.code, color: Colors.white, size: 20),
+                SizedBox(width: 5),
+                Icon(Icons.design_services, color: Colors.white, size: 20),
+              ],
             ),
           ],
         ),
@@ -73,3 +142,4 @@ class TeamScreen extends StatelessWidget {
     );
   }
 }
+
