@@ -1,0 +1,3 @@
+FaIcon(FontAwesomeIcons.linkedin, color: Colors.white70, size: 20),
+FaIcon(FontAwesomeIcons.instagram, color: Colors.white70, size: 20),
+FaIcon(FontAwesomeIcons.github, color: Colors.white70, size: 20),
