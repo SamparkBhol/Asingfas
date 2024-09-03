@@ -4,55 +4,81 @@ class TeamScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Color(0xFF191919),
       appBar: AppBar(
-        title: Text("Meet The Team"),
+        backgroundColor: Color(0xFF191919),
+        elevation: 0,
         leading: IconButton(
-          icon: Icon(Icons.arrow_back),
+          icon: Icon(Icons.arrow_back_ios, color: Colors.white),
           onPressed: () {
             Navigator.pop(context);
           },
         ),
+        title: Text('MEET THE TEAM', style: TextStyle(color: Colors.white)),
+        centerTitle: true,
       ),
-      body: ListView(
-        padding: EdgeInsets.all(16.0),
-        children: [
-          Text(
-            'Developers',
-            style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
-          ),
-          SizedBox(height: 10),
-          buildCarouselCard('Aryan', 'Flutter Developer'),
-          buildCarouselCard('Darshaan', 'Backend Lead'),
-          buildCarouselCard('Akshit', 'Developer'),
-          buildCarouselCard('Amrit', 'Developer'),
-          buildCarouselCard('Sampark', 'Developer'),
-          buildCarouselCard('Krish', 'Developer'),
-          SizedBox(height: 20),
-          Text(
-            'Designers',
-            style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
-          ),
-          SizedBox(height: 10),
-          buildCarouselCard('Aditya', 'UI/UX Designer'),
-          buildCarouselCard('Gourav', 'UI/UX Designer'),
-          buildCarouselCard('Ishi', 'UI/UX Designer'),
-        ],
+      body: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              'DEVELOPERS',
+              style: TextStyle(
+                color: Colors.white,
+                fontSize: 18,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+            SizedBox(height: 10),
+            Expanded(
+              child: ListView(
+                children: [
+                  buildTeamCard('Darshaan', 'Backend Lead', 'assets/images/darshaan.png'),
+                  buildTeamCard('Aryan', 'Flutter Developer', 'assets/images/aryan.png'),
+                  buildTeamCard('Akshit', 'Flutter Developer', 'assets/images/akshit.png'),
+                ],
+              ),
+            ),
+            SizedBox(height: 20),
+            Text(
+              'DESIGNERS',
+              style: TextStyle(
+                color: Colors.white,
+                fontSize: 18,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+            SizedBox(height: 10),
+            Expanded(
+              child: ListView(
+                children: [
+                  buildTeamCard('Æsh', 'UI/UX Designer', 'assets/images/aesh.png'),
+                  buildTeamCard('K Gaurav', 'UI/UX Designer', 'assets/images/gaurav.png'),
+                  buildTeamCard('Ishi', 'UI/UX Designer', 'assets/images/ishi.png'),
+                ],
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
 
-  Widget buildCarouselCard(String name, String role) {
+  Widget buildTeamCard(String name, String role, String imagePath) {
     return Card(
-      color: Color(0xFF2A2A2A),
-      elevation: 8,
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+      color: Color(0xFF232323),
+      elevation: 5,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(15),
+      ),
       child: Padding(
-        padding: EdgeInsets.all(16.0),
+        padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 8),
         child: Row(
           children: [
             CircleAvatar(
               radius: 30,
-              backgroundImage: AssetImage('assets/images/avatar_placeholder.png'), // Replace with your asset
+              backgroundImage: AssetImage(imagePath),
             ),
             SizedBox(width: 20),
             Column(
@@ -60,17 +86,32 @@ class TeamScreen extends StatelessWidget {
               children: [
                 Text(
                   name,
-                  style: TextStyle(color: Colors.white, fontSize: 18),
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 18,
+                    fontWeight: FontWeight.bold,
+                  ),
                 ),
                 SizedBox(height: 5),
                 Text(
                   role,
-                  style: TextStyle(color: Colors.white70, fontSize: 16),
+                  style: TextStyle(
+                    color: Colors.white70,
+                    fontSize: 14,
+                  ),
                 ),
               ],
             ),
             Spacer(),
-            Icon(Icons.arrow_forward_ios, color: Colors.white),
+            Row(
+              children: [
+                Icon(Icons.linked_in, color: Colors.white70, size: 20),  // Replace with actual icon or image for LinkedIn
+                SizedBox(width: 8),
+                Icon(Icons.inbox, color: Colors.white70, size: 20),       // Replace with actual icon or image for Instagram
+                SizedBox(width: 8),
+                Icon(Icons.wifi, color: Colors.white70, size: 20),        // Replace with actual icon or image for GitHub
+              ],
+            ),
           ],
         ),
       ),
